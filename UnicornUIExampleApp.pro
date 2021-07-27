@@ -30,7 +30,7 @@ FORMS += \
 
 
 
-RC_ICONS += app.ico
+RC_ICONS += img/app.ico
 
 RESOURCES += \
     appRc.qrc
