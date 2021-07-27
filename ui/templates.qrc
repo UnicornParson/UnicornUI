@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/UnicornUI/IconButton.qml</file>
+        <file>qml/UnicornUI/qmldir</file>
+        <file>qml/UnicornUI/TextButton.qml</file>
+        <file>qml/fakeRoot.qml</file>
+    </qresource>
+</RCC>
