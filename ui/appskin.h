@@ -63,21 +63,20 @@ signals:
     void defaultMarginChanged(int value);
     void defaultBorderSizeChanged(int value);
     void defaultBorderRadiusChanged(int value);
-public slots:
 
 private:
     // private setters
-    void setBackgroundColor(const QString& value);
-    void setMainFontColor(const QString& value);
-    void setButtonBackgroundColor(const QString& value);
-    void setButtonFontColor(const QString& value);
-    void setButtonBorderColor(const QString& value);
-    void setButtonHoveredBackgroundColor(const QString& value);
-    void setButtonHoveredFontColor(const QString& value);
-    void setButtonHoveredBorderColor(const QString& value);
-    void setButtonDisabledBackgroundColor(const QString& value);
-    void setButtonDisabledFontColor(const QString& value);
-    void setButtonDisabledBorderColor(const QString& value);
+    void setBackgroundColor(const QString& v);
+    void setMainFontColor(const QString& v);
+    void setButtonBackgroundColor(const QString& v);
+    void setButtonFontColor(const QString& v);
+    void setButtonBorderColor(const QString& v);
+    void setButtonHoveredBackgroundColor(const QString& v);
+    void setButtonHoveredFontColor(const QString& v);
+    void setButtonHoveredBorderColor(const QString& v);
+    void setButtonDisabledBackgroundColor(const QString& v);
+    void setButtonDisabledFontColor(const QString& v);
+    void setButtonDisabledBorderColor(const QString& v);
     void setDefaultMargin(int value);
     void setDefaultBorderSize(int value);
     void setDefaultBorderRadius(int value);

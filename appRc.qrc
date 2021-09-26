@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>app.ico</file>
+        <file alias="app.ico">img/app.ico</file>
+        <file alias="logo.png">img/UnicornUILogo.png</file>
     </qresource>
 </RCC>

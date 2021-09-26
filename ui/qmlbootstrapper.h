@@ -4,34 +4,19 @@
 #include <QObject>
 #include <QtQml/QQmlApplicationEngine>
 
-#include "appskin.h"
-#include "windowinfo.h"
+
+class WindowController;
 class QmlBootstrapper : public QObject
 {
     Q_OBJECT
 public:
     explicit QmlBootstrapper(QObject *parent = nullptr);
     ~QmlBootstrapper();
-    bool start();
-    QString rootPath() const;
-    void setRoot(const QString& path);
-signals:
-    void rootChanged(const QString& path);
-    void quit();
-    void exit(int retCode);
+    WindowController* createWindow(const QString& rootPath = "", int width = 0, int height = 0, const QString& title = "", QObject *parent = nullptr);
 
-public slots:
-    void onQmlWarnings(const QList<QQmlError> &warnings);
-    void onQuit();
-    void onExit(int retCode);
-private:
-    void createEngine();
-    void destroyEngine();
 
-    AppSkin m_skin;
-    WindowInfo m_winInfo;
-    QQmlApplicationEngine *m_qmlEngine;
-    QString m_rootPath;
+
+
 };
 
 #endif // QMLBOOTSTRAPPER_H

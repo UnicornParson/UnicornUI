@@ -2,22 +2,8 @@
 #include "QStringLiteral"
 #include "QString"
 #include <QDebug>
+#include "unicornuiglobal.h"
 
-#ifndef MAYBE_UNUSED
-#define MAYBE_UNUSED [[maybe_unused]]
-#endif
-
-#ifndef CONST_LITERAL
-#define CONST_LITERAL MAYBE_UNUSED const QString
-#endif
-
-#define CHANGE_VARIABLE(name) \
-    if(value != m_##name) \
-{ \
-    m_##name = value; \
-    qDebug() << #name << "property changed. new value:" << m_##name; \
-    emit name##Changed(m_##name); \
-}
 
 namespace DefaultSkin
 {
@@ -66,7 +52,6 @@ bool AppSkin::loadFromFile(const QString& path)
 
 QString AppSkin::backgroundColor() const
 {
-    qDebug() << "read backgroundColor";
     return m_backgroundColor;
 }
 
@@ -135,81 +120,142 @@ int AppSkin::defaultBorderRadius() const
     return m_defaultBorderRadius;
 }
 
-void AppSkin::setBackgroundColor(const QString& value)
+void AppSkin::setBackgroundColor(const QString& v)
 {
-    m_backgroundColor = value;
-    qDebug() << "backgroundColor" << "property changed. new value:" << m_backgroundColor;
+    m_backgroundColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "backgroundColor" << "property changed. new value:" << m_backgroundColor;
+    }
     emit backgroundColorChanged(m_backgroundColor);
 }
-void AppSkin::setMainFontColor(const QString& value)
+
+void AppSkin::setMainFontColor(const QString& v)
 {
-    m_mainFontColor = value;
-    qDebug() << "m_mainFontColor" << "property changed. new value:" << m_mainFontColor;
+    m_mainFontColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_mainFontColor" << "property changed. new value:" << m_mainFontColor;
+    }
     emit mainFontColorChanged(m_mainFontColor);
 }
 
-void AppSkin::setButtonBackgroundColor(const QString& value)
+void AppSkin::setButtonBackgroundColor(const QString& v)
 {
-    m_buttonBackgroundColor = value;
-    qDebug() << "m_buttonBackgroundColor" << "property changed. new value:" << m_buttonBackgroundColor;
+    m_buttonBackgroundColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonBackgroundColor" << "property changed. new value:" << m_buttonBackgroundColor;
+    }
     emit buttonBackgroundColorChanged(m_buttonBackgroundColor);
 }
 
-void AppSkin::setButtonFontColor(const QString& value)
+void AppSkin::setButtonFontColor(const QString& v)
 {
-    m_buttonFontColor = value;
-    qDebug() << "m_buttonFontColor" << "property changed. new value:" << m_buttonFontColor;
+    m_buttonFontColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonFontColor" << "property changed. new value:" << m_buttonFontColor;
+    }
     emit buttonFontColorChanged(m_buttonFontColor);
 }
 
-void AppSkin::setButtonBorderColor(const QString& value)
+void AppSkin::setButtonBorderColor(const QString& v)
 {
-    m_buttonBorderColor = value;
-    qDebug() << "m_buttonBorderColor" << "property changed. new value:" << m_buttonBorderColor;
+    m_buttonBorderColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonBorderColor" << "property changed. new value:" << m_buttonBorderColor;
+    }
     emit buttonBorderColorChanged(m_buttonBorderColor);
 }
 
-void AppSkin::setButtonHoveredBackgroundColor(const QString& value)
+void AppSkin::setButtonHoveredBackgroundColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonHoveredBackgroundColor)
+    m_buttonHoveredBackgroundColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonHoveredBackgroundColor" << "property changed. new value:" << m_buttonHoveredBackgroundColor;
+    }
+    emit buttonHoveredBackgroundColorChanged(m_buttonHoveredBackgroundColor);
 }
 
-void AppSkin::setButtonHoveredFontColor(const QString& value)
+void AppSkin::setButtonHoveredFontColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonHoveredFontColor)
+    m_buttonHoveredFontColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonHoveredFontColor" << "property changed. new value:" << m_buttonHoveredFontColor;
+    }
+    emit buttonHoveredFontColorChanged(m_buttonHoveredBackgroundColor);
 }
 
-void AppSkin::setButtonHoveredBorderColor(const QString& value)
+void AppSkin::setButtonHoveredBorderColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonHoveredBorderColor)
+    m_buttonHoveredBorderColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonHoveredBorderColor" << "property changed. new value:" << m_buttonHoveredBorderColor;
+    }
+    emit buttonHoveredBorderColorChanged(m_buttonHoveredBorderColor);
 }
 
-void AppSkin::setButtonDisabledBackgroundColor(const QString& value)
+void AppSkin::setButtonDisabledBackgroundColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonDisabledBackgroundColor)
+    m_buttonDisabledBackgroundColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonDisabledBackgroundColor" << "property changed. new value:" << m_buttonDisabledBackgroundColor;
+    }
+    emit buttonDisabledBackgroundColorChanged(m_buttonDisabledBackgroundColor);
 }
 
-void AppSkin::setButtonDisabledFontColor(const QString& value)
+void AppSkin::setButtonDisabledFontColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonDisabledFontColor)
+    m_buttonDisabledFontColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonDisabledFontColor" << "property changed. new value:" << m_buttonDisabledFontColor;
+    }
+    emit buttonDisabledFontColorChanged(m_buttonDisabledFontColor);
 }
 
-void AppSkin::setButtonDisabledBorderColor(const QString& value)
+void AppSkin::setButtonDisabledBorderColor(const QString& v)
 {
-    CHANGE_VARIABLE(buttonDisabledBorderColor)
+    m_buttonDisabledBorderColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_buttonDisabledBorderColor" << "property changed. new value:" << m_buttonDisabledBorderColor;
+    }
+    emit buttonDisabledBorderColorChanged(m_buttonDisabledBorderColor);
 }
 
-void AppSkin::setDefaultMargin(int value)
+void AppSkin::setDefaultMargin(int v)
 {
-    CHANGE_VARIABLE(defaultMargin)
+    m_defaultMargin = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_defaultMargin" << "property changed. new value:" << m_defaultMargin;
+    }
+    emit defaultMarginChanged(m_defaultMargin);
 }
 
-void AppSkin::setDefaultBorderSize(int value)
+void AppSkin::setDefaultBorderSize(int v)
 {
-    CHANGE_VARIABLE(defaultBorderSize)
+    m_defaultBorderSize = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_defaultBorderSize" << "property changed. new value:" << m_defaultBorderSize;
+    }
+    emit defaultBorderSizeChanged(m_defaultBorderSize);
 }
 
-void AppSkin::setDefaultBorderRadius(int value)
+void AppSkin::setDefaultBorderRadius(int v)
 {
-    CHANGE_VARIABLE(defaultBorderRadius)
+    m_defaultBorderRadius = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_defaultBorderRadius" << "property changed. new value:" << m_defaultBorderRadius;
+    }
+    emit defaultBorderRadiusChanged(m_defaultBorderRadius);
 }

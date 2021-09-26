@@ -22,10 +22,10 @@ public:
     QString Title() const;
     QString Name() const;
 
-    void setWidth(uint v);
-    void setHeight(uint v);
-    void setTitle(QString v);
-    void setName(QString v);
+    Q_INVOKABLE void setWidth(uint v);
+    Q_INVOKABLE void setHeight(uint v);
+    Q_INVOKABLE void setTitle(QString v);
+    Q_INVOKABLE void setName(QString v);
 
 signals:
     void WidthChanged(uint v);

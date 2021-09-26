@@ -1,7 +1,7 @@
-QT += core gui qml quick quickcontrols2 quicklayouts
+QT += core gui qml quick quickcontrols2
 TARGET = UnicornUIExample
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+greaterThan(QT_MAJOR_VERSION, 6): QT += quicklayouts
 CONFIG += c++17
 QMAKE_CXXFLAGS_WARN_ON -= -Wreorder -Wformat= -WsignConversion
 DEFINES += QT_DEPRECATED_WARNINGS

@@ -55,3 +55,4 @@ debug/*
 release/*
 bin/*
 UnicornUIExample_resource.rc
+ui_templates_qmlcache.qrc

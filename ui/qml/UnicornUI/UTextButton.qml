@@ -1,7 +1,8 @@
-import QtQuick
+import QtQuick 2.12
 import TemplatesTypes 1.0
 Item {
     id: root
+
 
     property alias text: label.text
     property alias textFormat: label.textFormat
@@ -20,7 +21,8 @@ Item {
     signal clicked()
     signal pressed()
     signal released()
-
+    signal hoverOn()
+    signal hoverOf()
 
     Rectangle {
         id: border
@@ -58,7 +60,7 @@ Item {
         anchors.fill: parent
         hoverEnabled: true
         enabled: root.state !== ButtonState.Disabled
-        preventStealing: root.grabMouse
+        preventStealing: true
         onContainsMouseChanged:
         {
             if(root.state !== ButtonState.Disabled)
@@ -67,18 +69,28 @@ Item {
             }
         }
 
-
         onPressed: {
             root.isPressed = true
-            root.pre
+            root.pressed()
         }
 
         onReleased:
         {
+            root.released()
+            if(root.isPressed)
+            {
+                root.clicked()
+            }
             root.isPressed = false
-        }
 
+        }
     }
+
+    UDebugOverlay {
+        anchors.fill: root
+        itemName: "UTextButton"
+    }
+/*
     states: [
         State {
             name: "normal"
@@ -90,4 +102,5 @@ Item {
             }
         }
     ]
+    */
 }

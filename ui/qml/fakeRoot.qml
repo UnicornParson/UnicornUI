@@ -1,31 +1,28 @@
-import QtQuick
-import QtQuick.Controls
-import UnicornUI
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import UnicornUI 1.0
 
-ApplicationWindow
+UWindow
 {
-
-        width: wininfo.Width
-        height:wininfo.Height
+    Rectangle {
+        anchors.fill: parent
+        anchors.margins: 0
         color: skin.backgroundColor
-        title: wininfo.Title
-        visible: true
-        flags: Qt.Window | Qt.WindowFullscreenButtonHint
-        Rectangle {
-            anchors.fill: parent
-            anchors.margins: 0
-            color: skin.backgroundColor
-
-        }
-
-
-        TextButton {
-            //text: qsTr("Hello World")
-            //anchors.centerIn: parent
-            width: 200
-            height: 100
-            anchors.top: parent.top
-            anchors.left: parent.left
-        }
 
     }
+
+
+    UTextButton {
+        text: qsTr("Hello World")
+        anchors.centerIn: parent
+        width: 200
+        height: 100
+        anchors.top: parent.top
+        anchors.left: parent.left
+
+        onClicked: {
+            console.warn("onClicked")
+        }
+    }
+
+}
