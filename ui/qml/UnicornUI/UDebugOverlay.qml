@@ -4,6 +4,7 @@ Item {
     id: root
 
     property string itemName: ""
+    property alias label: sizeLabel
 
     visible: globals ? globals.debugGridEnabled : false
 

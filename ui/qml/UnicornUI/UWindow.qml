@@ -5,6 +5,9 @@ ApplicationWindow
 {
     id: root
 
+    property alias backgroundElement: bgElement
+    property alias itemName: dOverlay.itemName
+
     width: wininfo.Width
     height: wininfo.Height
     color: skin.backgroundColor
@@ -24,8 +27,66 @@ ApplicationWindow
         wininfo.setTitle(root.title)
     }
 
+    onFrameSwapped: {
+        fpsItem.frameSwappedHandler()
+    }
+
+    UBackgroundElement {
+        id: bgElement
+
+        anchors.left: root.left
+        anchors.top: root.top
+        anchors.margins: 0
+        width: root.width
+        height: root.height
+    }
+
+    Rectangle {
+        id: fpsBooster
+        anchors.top: root.top
+        anchors.left: root.left
+        width: 1
+        height: 1
+        color: "red"
+        visible: globals ? globals.fpsBoosterEnabled : false
+    }
+
+    Timer {
+        id: updateTimer
+        running: true
+        repeat: true
+        interval: 0
+        onTriggered: {
+            fpsBooster.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1)
+        }
+        property int previousValue: 99
+    }
+
+    Component.onCompleted: {
+        updateTimer.start()
+    }
+
     UDebugOverlay {
-        anchors.fill: parent
+        id: dOverlay
+        anchors.left: root.left
+        anchors.top: root.top
+        //anchors.fill: parent
         itemName: "UWindow"
+    }
+
+    UFPSLabel {
+        id: fpsItem
+        anchors.top: dOverlay.visible ? dOverlay.bottom : root.top
+        anchors.left: root.left
+        anchors.topMargin: 16//dOverlay.visible ? dOverlay.label.height : 0
+        anchors.leftMargin: 24
+        textColor: "#6ab04c"
+        bgColor: "#3d3d3d"
+        spinerVisible: false
+        spinerSource: "qrc:/qml/img/bullet-green.png"
+        coloredImage: false
+        Component.onCompleted: {
+            console.log(anchors.topMargin)
+        }
     }
 }

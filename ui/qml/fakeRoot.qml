@@ -4,13 +4,8 @@ import UnicornUI 1.0
 
 UWindow
 {
-    Rectangle {
-        anchors.fill: parent
-        anchors.margins: 0
-        color: skin.backgroundColor
 
-    }
-
+    backgroundElement.color: skin.backgroundColor
 
     UTextButton {
         text: qsTr("Hello World")
@@ -24,5 +19,8 @@ UWindow
             console.warn("onClicked")
         }
     }
+
+
+
 
 }

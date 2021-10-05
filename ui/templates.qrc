@@ -6,5 +6,12 @@
         <file>qml/fakeRoot.qml</file>
         <file>qml/UnicornUI/UWindow.qml</file>
         <file>qml/UnicornUI/UDebugOverlay.qml</file>
+        <file>qml/UnicornUI/UBaseItem.qml</file>
+        <file>qml/UnicornUI/UFPSLabel.qml</file>
+        <file>qml/img/circle.png</file>
+        <file>qml/UnicornUI/UBackgroundElement.qml</file>
+        <file>qml/UnicornUI/UImage.qml</file>
+        <file>qml/img/circleWhite.png</file>
+        <file>qml/img/bullet-green.png</file>
     </qresource>
 </RCC>

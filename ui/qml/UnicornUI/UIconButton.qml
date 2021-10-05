@@ -1,4 +1,9 @@
 import QtQuick 2.12
-Rectangle {
-    anchors.fill: parent
+UBaseItem {
+    id: root
+
+
+    Rectangle {
+        anchors.fill: root
+    }
 }

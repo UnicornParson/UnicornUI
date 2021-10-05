@@ -26,6 +26,7 @@ class UnicornUIGlobal : public QObject
     Q_OBJECT
     Q_PROPERTY(bool debugGridEnabled READ debugGridEnabled WRITE setDebugGridEnabled NOTIFY debugGridEnabledChanged)
     Q_PROPERTY(bool propertyLoggingEnabled READ propertyLoggingEnabled WRITE setPropertyLoggingEnabled NOTIFY propertyLoggingEnabledChanged)
+    Q_PROPERTY(bool fpsBoosterEnabled READ fpsBoosterEnabled WRITE setFpsBoosterEnabled NOTIFY fpsBoosterEnabledChanged)
 public:
     explicit UnicornUIGlobal(QObject *parent = nullptr);
     static UnicornUIGlobal& self();
@@ -33,16 +34,22 @@ public:
     bool debugGridEnabled() const;
     void setDebugGridEnabled(bool v);
 
+
     bool propertyLoggingEnabled() const;
     void setPropertyLoggingEnabled(bool v);
+
+    bool fpsBoosterEnabled() const;
+    void setFpsBoosterEnabled(bool v);
 
 signals:
     void debugGridEnabledChanged(bool v);
     void propertyLoggingEnabledChanged(bool v);
+    void fpsBoosterEnabledChanged(bool v);
 
 private:
     bool m_debugGridEnabled;
     bool m_propertyLoggingEnabled;
+    bool m_fpsBoosterEnabled;
 };
 
 #endif // UNICORNUIGLOBAL_H

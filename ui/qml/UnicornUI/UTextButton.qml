@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import TemplatesTypes 1.0
-Item {
+UBaseItem {
     id: root
 
 
@@ -17,6 +17,8 @@ Item {
 
     property int state: ButtonState.Normal
     property bool isPressed: false
+
+    itemName: "UTextButton"
 
     signal clicked()
     signal pressed()

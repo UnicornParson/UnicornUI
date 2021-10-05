@@ -4,7 +4,8 @@
 UnicornUIGlobal::UnicornUIGlobal(QObject *parent) :
     QObject(parent),
     m_debugGridEnabled(false),
-    m_propertyLoggingEnabled(false)
+    m_propertyLoggingEnabled(false),
+  m_fpsBoosterEnabled(false)
 {
 
 }
@@ -30,6 +31,24 @@ void UnicornUIGlobal::setDebugGridEnabled(bool v)
             qDebug() << "m_debugGridEnabled" << "property changed. new value:" << m_debugGridEnabled;
         }
         emit debugGridEnabledChanged(m_debugGridEnabled);
+    }
+}
+
+bool UnicornUIGlobal::fpsBoosterEnabled() const
+{
+    return m_fpsBoosterEnabled;
+}
+
+void UnicornUIGlobal::setFpsBoosterEnabled(bool v)
+{
+    if (m_fpsBoosterEnabled != v)
+    {
+        m_fpsBoosterEnabled = v;
+        if (m_fpsBoosterEnabled)
+        {
+            qDebug() << "m_fpsBoosterEnabled" << "property changed. new value:" << m_fpsBoosterEnabled;
+        }
+        emit fpsBoosterEnabledChanged(m_fpsBoosterEnabled);
     }
 }
 
