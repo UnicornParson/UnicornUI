@@ -7,6 +7,7 @@ UWindow
 
     backgroundElement.color: skin.backgroundColor
 
+
     UTextButton {
         text: qsTr("Hello World")
         anchors.centerIn: parent
@@ -20,7 +21,16 @@ UWindow
         }
     }
 
-
-
+Component.onCompleted: {
+    if(!globals)
+    {
+        console.error("no globals")
+        return
+    }
+    globals.setFpsIndicatorEnabled(false)
+    globals.setDebugGridEnabled(true)
+    globals.setPropertyLoggingEnabled(true)
+    globals.setFpsBoosterEnabled(false)
+}
 
 }

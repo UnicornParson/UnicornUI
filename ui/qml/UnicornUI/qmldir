@@ -1,4 +1,7 @@
 module UnicornUI
+
+internal loggerProxy internal/loggerProxy.js
+
 UIconButton 1.0 UIconButton.qml
 UTextButton 1.0 UTextButton.qml
 UWindow 1.0 UWindow.qml
@@ -6,3 +9,6 @@ UDebugOverlay 1.0 UDebugOverlay.qml
 UFPSLabel 1.0 UFPSLabel.qml
 UBackgroundElement 1.0 UBackgroundElement.qml
 UImage 1.0 UImage.qml
+UModalDialog 1.0 UModalDialog.qml
+USimpleDialog 1.0 USimpleDialog.qml
+ULabel 1.0 ULabel.qml

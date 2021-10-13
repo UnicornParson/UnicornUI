@@ -3,8 +3,10 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import QtGraphicalEffects 1.12
+
 Item {
     id: root
+
     property alias bgColor: background.color
     property alias textColor: fpsText.color
     property alias spinerSource: spinnerImage.source
@@ -26,7 +28,7 @@ Item {
 
     width:  ((spinnerImage.visible) ? spinnerImage.width : 0) + fpsText.width + (delimiterSize * 2);
     height: spinnerHeight
-
+    visible: globals ? globals.fpsIndicatorEnabled : false
     Rectangle {
         id: background
         color: "black"

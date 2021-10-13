@@ -8,6 +8,18 @@ ApplicationWindow
     property alias backgroundElement: bgElement
     property alias itemName: dOverlay.itemName
 
+    function showDialog(src)
+    {
+        dialogLoader.dialogSource = src
+        dialogLoader.visible = true
+    }
+
+    function hideDialog()
+    {
+        dialogLoader.visible = false
+        dialogLoader.dialogSource = ""
+    }
+
     width: wininfo.Width
     height: wininfo.Height
     color: skin.backgroundColor
@@ -53,8 +65,8 @@ ApplicationWindow
 
     Timer {
         id: updateTimer
-        running: true
-        repeat: true
+        running: globals ? globals.fpsBoosterEnabled : false
+        repeat: globals ? globals.fpsBoosterEnabled : false
         interval: 0
         onTriggered: {
             fpsBooster.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1)
@@ -88,5 +100,23 @@ ApplicationWindow
         Component.onCompleted: {
             console.log(anchors.topMargin)
         }
+    }
+
+    UModalDialog {
+        id: dialogLoader
+
+        anchors.fill: root
+        dialogWidth: root.width - 100
+        dialogHeight: root.height - 100
+        bgImageColor: "black"
+        blurEffect: true
+        /*    property int dialogWidth: 800
+    property int dialogHeight: 600
+    property alias dialogSource: dialogLoader.source
+    property alias bgImageSource: bgImage.source
+    property alias bgImageColor: bgImage.placeholderColor
+    property bool blurEffect: true
+    property bool blurEffectRadius: 100
+    property bool blurEffectTransparentBorder : true*/
     }
 }
