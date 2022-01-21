@@ -44,6 +44,7 @@ class UnicornUIGlobal : public QObject
     Q_PROPERTY(bool propertyLoggingEnabled READ propertyLoggingEnabled WRITE setPropertyLoggingEnabled NOTIFY propertyLoggingEnabledChanged)
     Q_PROPERTY(bool fpsBoosterEnabled READ fpsBoosterEnabled WRITE setFpsBoosterEnabled NOTIFY fpsBoosterEnabledChanged)
     Q_PROPERTY(bool fpsIndicatorEnabled READ fpsIndicatorEnabled WRITE setFpsIndicatorEnabled NOTIFY fpsIndicatorEnabledChanged)
+
 public:
 
     explicit UnicornUIGlobal(QObject *parent = nullptr);
@@ -79,6 +80,7 @@ private:
     UnicornUIGlobal(const UnicornUIGlobal&) = delete;
     UnicornUIGlobal(const UnicornUIGlobal&&) = delete;
     UnicornUIGlobal& operator=(const UnicornUIGlobal&) = delete;
+    UnicornUIGlobal& operator=(const UnicornUIGlobal&&) = delete;
 
     bool m_debugGridEnabled;
     bool m_propertyLoggingEnabled;

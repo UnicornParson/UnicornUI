@@ -10,6 +10,7 @@ class AppSkin : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString backgroundColor READ backgroundColor NOTIFY backgroundColorChanged)
+    Q_PROPERTY(QString secondBackgroundColor READ secondBackgroundColor NOTIFY secondBackgroundColorChanged)
     Q_PROPERTY(QString mainFontColor READ mainFontColor NOTIFY mainFontColorChanged)
 
     Q_PROPERTY(QString buttonBackgroundColor READ buttonBackgroundColor NOTIFY buttonBackgroundColorChanged)
@@ -28,12 +29,16 @@ class AppSkin : public QObject
     Q_PROPERTY(int defaultBorderSize READ defaultBorderSize NOTIFY defaultBorderSizeChanged)
     Q_PROPERTY(int defaultBorderRadius READ defaultBorderRadius NOTIFY defaultBorderRadiusChanged)
 
+    Q_PROPERTY(QString firstBorderColor READ firstBorderColor NOTIFY firstBorderColorChanged)
+    Q_PROPERTY(QString secondBorderColor READ secondBorderColor NOTIFY secondBorderColorChanged)
+
 public:
     explicit AppSkin(QObject *parent = nullptr);
     bool loadFromFile(const QString& path);
 
     // getters
     QString backgroundColor() const;
+    QString secondBackgroundColor() const;
     QString mainFontColor() const;
     QString buttonBackgroundColor() const;
     QString buttonFontColor() const;
@@ -48,8 +53,12 @@ public:
     int defaultBorderSize() const;
     int defaultBorderRadius() const;
 
+    QString firstBorderColor() const;
+    QString secondBorderColor() const;
+
 signals:
     void backgroundColorChanged(const QString& value);
+    void secondBackgroundColorChanged(const QString& value);
     void mainFontColorChanged(const QString& value);
     void buttonBackgroundColorChanged(const QString& value);
     void buttonFontColorChanged(const QString& value);
@@ -64,9 +73,13 @@ signals:
     void defaultBorderSizeChanged(int value);
     void defaultBorderRadiusChanged(int value);
 
+    void firstBorderColorChanged(const QString& value);
+    void secondBorderColorChanged(const QString& value);
+
 private:
     // private setters
     void setBackgroundColor(const QString& v);
+    void setSecondBackgroundColor(const QString& v);
     void setMainFontColor(const QString& v);
     void setButtonBackgroundColor(const QString& v);
     void setButtonFontColor(const QString& v);
@@ -81,7 +94,11 @@ private:
     void setDefaultBorderSize(int value);
     void setDefaultBorderRadius(int value);
 
+    void setFirstBorderColorColor(const QString& v);
+    void setSecondBorderColorColor(const QString& v);
+
     QString m_backgroundColor;
+    QString m_secondBackgroundColor;
     QString m_mainFontColor;
     QString m_buttonBackgroundColor;
     QString m_buttonFontColor;
@@ -92,6 +109,10 @@ private:
     QString m_buttonDisabledBackgroundColor;
     QString m_buttonDisabledFontColor;
     QString m_buttonDisabledBorderColor;
+
+    QString m_firstBorderColor;
+    QString m_secondBorderColor;
+
     int m_defaultMargin;
     int m_defaultBorderSize;
     int m_defaultBorderRadius;

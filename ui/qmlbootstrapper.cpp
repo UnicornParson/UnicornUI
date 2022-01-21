@@ -3,7 +3,7 @@
 #include <QDebug>
 namespace
 {
-const QString PlaceholderRoot("qrc:///qml/fakeRoot.qml");
+const QString PlaceholderRoot("qrc:///qml/sampleRoot.qml");
 }
 
 QmlBootstrapper::QmlBootstrapper(QObject *parent) :

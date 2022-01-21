@@ -17,7 +17,7 @@ UBaseItem {
         id: background
         anchors.fill: parent
         color: root.backgroundColor
-        anchors.margins:
+        anchors.margins: skin.defaultMargin
     }
 
 

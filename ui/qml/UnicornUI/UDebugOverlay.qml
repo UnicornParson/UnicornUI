@@ -26,7 +26,7 @@ Item {
             top: root.top
             left: root.left
         }
-        text: itemName + "." + root.width + "." + root.height
+        text: itemName + ".(" + root.x + ":" + root.y + ")(" + root.width + "." + root.height + ")"
         color: "white"
         minimumPointSize: 6
         font.pointSize: 8

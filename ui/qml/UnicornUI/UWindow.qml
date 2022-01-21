@@ -105,7 +105,7 @@ ApplicationWindow
     UModalDialog {
         id: dialogLoader
 
-        anchors.fill: root
+        anchors.fill: parent
         dialogWidth: root.width - 100
         dialogHeight: root.height - 100
         bgImageColor: "black"
@@ -118,5 +118,14 @@ ApplicationWindow
     property bool blurEffect: true
     property bool blurEffectRadius: 100
     property bool blurEffectTransparentBorder : true*/
+    }
+
+    UGridLines {
+        id: debugGrid
+
+        visible: globals ? globals.fpsIndicatorEnabled : false
+        gridColor: "#3E005D"
+        gridOpacity: 0.5
+        anchors.fill: parent
     }
 }

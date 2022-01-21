@@ -3,7 +3,7 @@
         <file>qml/UnicornUI/UIconButton.qml</file>
         <file>qml/UnicornUI/qmldir</file>
         <file>qml/UnicornUI/UTextButton.qml</file>
-        <file>qml/fakeRoot.qml</file>
+        <file>qml/sampleRoot.qml</file>
         <file>qml/UnicornUI/UWindow.qml</file>
         <file>qml/UnicornUI/UDebugOverlay.qml</file>
         <file>qml/UnicornUI/UBaseItem.qml</file>
@@ -17,5 +17,8 @@
         <file>qml/UnicornUI/UModalDialog.qml</file>
         <file>qml/UnicornUI/USimpleDialog.qml</file>
         <file>qml/UnicornUI/ULabel.qml</file>
+        <file>qml/UnicornUI/UGridLines.qml</file>
+        <file>qml/UnicornUI/internal/UGridSprite.qml</file>
+        <file>qml/UnicornUI/UPanel.qml</file>
     </qresource>
 </RCC>

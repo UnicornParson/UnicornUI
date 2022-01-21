@@ -8,6 +8,11 @@
 namespace DefaultSkin
 {
 CONST_LITERAL DefaultBackgroundColor("white");
+CONST_LITERAL DefaultSecondBackgroundColor("#C5D3E2");
+
+CONST_LITERAL DefaultFirstBorderColor("#303030");
+CONST_LITERAL DefaultSecondBorderColor("#1C2A39");
+
 CONST_LITERAL DefaultFontColor("black");
 CONST_LITERAL DefaultButtonBackgroundColor("#C5D3E2");
 CONST_LITERAL DefaultButtonFontColor("#5C6A79");
@@ -26,6 +31,7 @@ constexpr int DefaultBorderRadius = 5;
 AppSkin::AppSkin(QObject *parent) :
     QObject(parent),
     m_backgroundColor(DefaultSkin::DefaultBackgroundColor),
+    m_secondBackgroundColor(DefaultSkin::DefaultSecondBackgroundColor),
     m_mainFontColor(DefaultSkin::DefaultFontColor),
     m_buttonBackgroundColor(DefaultSkin::DefaultButtonBackgroundColor),
     m_buttonFontColor(DefaultSkin::DefaultButtonFontColor),
@@ -36,6 +42,8 @@ AppSkin::AppSkin(QObject *parent) :
     m_buttonDisabledBackgroundColor(DefaultSkin::DefaultButtonDisabledBackgroundColor),
     m_buttonDisabledFontColor(DefaultSkin::DefaultButtonDisabledFontColor),
     m_buttonDisabledBorderColor(DefaultSkin::DefaultButtonDisabledBorderColor),
+    m_firstBorderColor(DefaultSkin::DefaultFirstBorderColor),
+    m_secondBorderColor(DefaultSkin::DefaultSecondBorderColor),
     m_defaultMargin(DefaultSkin::DefaultMargin),
     m_defaultBorderSize(DefaultSkin::DefaultBorderSize),
     m_defaultBorderRadius(DefaultSkin::DefaultBorderRadius)
@@ -53,6 +61,11 @@ bool AppSkin::loadFromFile(const QString& path)
 QString AppSkin::backgroundColor() const
 {
     return m_backgroundColor;
+}
+
+QString AppSkin::secondBackgroundColor() const
+{
+    return m_secondBackgroundColor;
 }
 
 QString AppSkin::mainFontColor() const
@@ -105,6 +118,16 @@ QString AppSkin::buttonDisabledBorderColor() const
     return m_buttonDisabledBorderColor;
 }
 
+QString AppSkin::firstBorderColor() const
+{
+    return m_firstBorderColor;
+}
+
+QString AppSkin::secondBorderColor() const
+{
+    return m_secondBorderColor;
+}
+
 int AppSkin::defaultMargin() const
 {
     return m_defaultMargin;
@@ -128,6 +151,16 @@ void AppSkin::setBackgroundColor(const QString& v)
         qDebug() << "backgroundColor" << "property changed. new value:" << m_backgroundColor;
     }
     emit backgroundColorChanged(m_backgroundColor);
+}
+
+void AppSkin::setSecondBackgroundColor(const QString& v)
+{
+    m_secondBackgroundColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_secondBackgroundColor" << "property changed. new value:" << m_secondBackgroundColor;
+    }
+    emit secondBackgroundColorChanged(m_secondBackgroundColor);
 }
 
 void AppSkin::setMainFontColor(const QString& v)

@@ -4,9 +4,18 @@ import UnicornUI 1.0
 
 UWindow
 {
-
+    id: root
     backgroundElement.color: skin.backgroundColor
 
+    UPanel {
+        anchors {
+            left: parent.left
+            top: parent.top
+            bottom: parent.bottom
+
+        }
+        width: 200
+    }
 
     UTextButton {
         text: qsTr("Hello World")
@@ -31,6 +40,9 @@ Component.onCompleted: {
     globals.setDebugGridEnabled(true)
     globals.setPropertyLoggingEnabled(true)
     globals.setFpsBoosterEnabled(false)
+
+    console.warn("1 width:", width)
+    console.warn("1 height:", height)
 }
 
 }
