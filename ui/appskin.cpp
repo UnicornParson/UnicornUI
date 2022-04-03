@@ -23,6 +23,8 @@ CONST_LITERAL DefaultButtonHoveredBorderColor("#C5D3E2");
 CONST_LITERAL DefaultButtonDisabledBackgroundColor("#E0E0E0");
 CONST_LITERAL DefaultButtonDisabledFontColor("#D0D0D0");
 CONST_LITERAL DefaultButtonDisabledBorderColor("#D0D0D0");
+CONST_LITERAL DefaultAccentColor("#303030");
+
 constexpr int DefaultMargin = 2;
 constexpr int DefaultBorderSize = 1;
 constexpr int DefaultBorderRadius = 5;
@@ -44,6 +46,7 @@ AppSkin::AppSkin(QObject *parent) :
     m_buttonDisabledBorderColor(DefaultSkin::DefaultButtonDisabledBorderColor),
     m_firstBorderColor(DefaultSkin::DefaultFirstBorderColor),
     m_secondBorderColor(DefaultSkin::DefaultSecondBorderColor),
+    m_accentColor(DefaultSkin::DefaultAccentColor),
     m_defaultMargin(DefaultSkin::DefaultMargin),
     m_defaultBorderSize(DefaultSkin::DefaultBorderSize),
     m_defaultBorderRadius(DefaultSkin::DefaultBorderRadius)
@@ -56,6 +59,37 @@ bool AppSkin::loadFromFile(const QString& path)
     Q_UNUSED(path)
     // TODO: json loader
     return false;
+}
+
+bool AppSkin::loadFromMap(const QMap<SkinKey, QString>& map)
+{
+    bool ret = true;
+    for (auto it = map.constKeyValueBegin(); it != map.constKeyValueEnd(); ++it)
+    {
+        const QString& val = it->second;
+        switch(it->first)
+        {
+        case SkinKey::BackgroundColor: {setBackgroundColor(val);break;}
+        case SkinKey::SecondBackgroundColor: {setSecondBackgroundColor(val);break;}
+        case SkinKey::FirstBorderColor: {setFirstBorderColor(val);break;}
+        case SkinKey::SecondBorderColor: {setSecondBorderColor(val);break;}
+        case SkinKey::FontColor: {setMainFontColor(val);break;}
+        case SkinKey::ButtonBackgroundColor: {setButtonBackgroundColor(val);break;}
+        case SkinKey::ButtonFontColor: {setButtonFontColor(val);break;}
+        case SkinKey::ButtonBorderColor: {setButtonBorderColor(val);break;}
+        case SkinKey::ButtonHoveredBackgroundColor: {setButtonHoveredBackgroundColor(val);break;}
+        case SkinKey::ButtonHoveredFontColor: {setButtonHoveredFontColor(val);break;}
+        case SkinKey::ButtonHoveredBorderColor: {setButtonHoveredBorderColor(val);break;}
+        case SkinKey::ButtonDisabledBackgroundColor: {setButtonDisabledBackgroundColor(val);break;}
+        case SkinKey::ButtonDisabledFontColor: {setButtonDisabledFontColor(val);break;}
+        case SkinKey::ButtonDisabledBorderColor: {setButtonDisabledBorderColor(val);break;}
+        case SkinKey::Margin: {setDefaultMargin(val.toInt(&ret));break;}
+        case SkinKey::BorderSize: {setDefaultBorderSize(val.toInt(&ret));break;}
+        case SkinKey::BorderRadius: {setDefaultBorderRadius(val.toInt(&ret));break;}
+        case SkinKey::AccentColor: {setAccentColor(val);break;}
+        }
+    }
+    return ret;
 }
 
 QString AppSkin::backgroundColor() const
@@ -126,6 +160,11 @@ QString AppSkin::firstBorderColor() const
 QString AppSkin::secondBorderColor() const
 {
     return m_secondBorderColor;
+}
+
+QString AppSkin::accentColor() const
+{
+    return m_accentColor;
 }
 
 int AppSkin::defaultMargin() const
@@ -281,6 +320,36 @@ void AppSkin::setDefaultBorderSize(int v)
         qDebug() << "m_defaultBorderSize" << "property changed. new value:" << m_defaultBorderSize;
     }
     emit defaultBorderSizeChanged(m_defaultBorderSize);
+}
+
+void AppSkin::setFirstBorderColor(const QString& v)
+{
+    m_firstBorderColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_firstBorderColor" << "property changed. new value:" << m_firstBorderColor;
+    }
+    emit firstBorderColorChanged(m_firstBorderColor);
+}
+
+void AppSkin::setAccentColor(const QString& v)
+{
+    m_accentColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_accentColor" << "property changed. new value:" << m_accentColor;
+    }
+    emit accentColorChanged(m_accentColor);
+}
+
+void AppSkin::setSecondBorderColor(const QString& v)
+{
+    m_secondBorderColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_secondBorderColor" << "property changed. new value:" << m_secondBorderColor;
+    }
+    emit secondBorderColorChanged(m_secondBorderColor);
 }
 
 void AppSkin::setDefaultBorderRadius(int v)

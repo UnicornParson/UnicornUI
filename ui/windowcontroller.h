@@ -23,6 +23,12 @@ public:
     QString title() const;
     QObject* wininfoobj();
     WindowInfo& info();
+    AppSkin& skin();
+
+
+    QVariant contextProperty(const QString &name) const;
+    void setContextProperty(const QString &name, QObject *obj);
+    void setContextProperty(const QString &name, const QVariant &v);
 
 signals:
     void rootChanged(const QString& path);

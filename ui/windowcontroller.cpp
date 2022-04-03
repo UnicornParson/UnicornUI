@@ -58,6 +58,11 @@ void WindowController::setRoot(const QString& path)
     }
 }
 
+AppSkin& WindowController::skin()
+{
+    return m_skin;
+}
+
 bool WindowController::start()
 {
     bool ret = false;
@@ -177,4 +182,19 @@ void WindowController::onQmlWarnings(const QList<QQmlError> &warnings)
                       .arg(e.column())
                       .arg(e.description());
     }
+}
+
+QVariant WindowController::contextProperty(const QString &name) const
+{
+    return m_qmlEngine->rootContext()->contextProperty(name);
+}
+
+void WindowController::setContextProperty(const QString &name, QObject *obj)
+{
+    return m_qmlEngine->rootContext()->setContextProperty(name, obj);
+}
+
+void WindowController::setContextProperty(const QString &name, const QVariant &v)
+{
+    return m_qmlEngine->rootContext()->setContextProperty(name, v);
 }

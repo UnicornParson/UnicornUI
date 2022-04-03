@@ -16,6 +16,7 @@ Item {
         anchors.fill: parent
         border.color: skin.secondBorderColor
         border.width: skin.defaultBorderSize
+        color: "transparent"
         anchors.margins: 0
         radius: 0
     }

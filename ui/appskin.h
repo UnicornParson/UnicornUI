@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-//TODO: move to toolib qml library
-
 class AppSkin : public QObject
 {
     Q_OBJECT
@@ -31,10 +29,35 @@ class AppSkin : public QObject
 
     Q_PROPERTY(QString firstBorderColor READ firstBorderColor NOTIFY firstBorderColorChanged)
     Q_PROPERTY(QString secondBorderColor READ secondBorderColor NOTIFY secondBorderColorChanged)
-
+    Q_PROPERTY(QString accentColor READ accentColor NOTIFY accentColorChanged)
 public:
+    enum class SkinKey
+    {
+        BackgroundColor,
+        SecondBackgroundColor,
+        FirstBorderColor,
+        SecondBorderColor,
+        FontColor,
+        ButtonBackgroundColor,
+        ButtonFontColor,
+        ButtonBorderColor,
+        ButtonHoveredBackgroundColor,
+        ButtonHoveredFontColor,
+        ButtonHoveredBorderColor,
+        ButtonDisabledBackgroundColor,
+        ButtonDisabledFontColor,
+        ButtonDisabledBorderColor,
+        Margin,
+        BorderSize,
+        BorderRadius,
+        AccentColor
+    };
+    Q_ENUM(SkinKey)
+
     explicit AppSkin(QObject *parent = nullptr);
+
     bool loadFromFile(const QString& path);
+    bool loadFromMap(const QMap<SkinKey, QString>& map);
 
     // getters
     QString backgroundColor() const;
@@ -49,12 +72,14 @@ public:
     QString buttonDisabledBackgroundColor() const;
     QString buttonDisabledFontColor() const;
     QString buttonDisabledBorderColor() const;
+
     int defaultMargin() const;
     int defaultBorderSize() const;
     int defaultBorderRadius() const;
 
     QString firstBorderColor() const;
     QString secondBorderColor() const;
+    QString accentColor() const;
 
 signals:
     void backgroundColorChanged(const QString& value);
@@ -75,6 +100,7 @@ signals:
 
     void firstBorderColorChanged(const QString& value);
     void secondBorderColorChanged(const QString& value);
+    void accentColorChanged(const QString& value);
 
 private:
     // private setters
@@ -93,9 +119,9 @@ private:
     void setDefaultMargin(int value);
     void setDefaultBorderSize(int value);
     void setDefaultBorderRadius(int value);
-
-    void setFirstBorderColorColor(const QString& v);
-    void setSecondBorderColorColor(const QString& v);
+    void setAccentColor(const QString& v);
+    void setFirstBorderColor(const QString& v);
+    void setSecondBorderColor(const QString& v);
 
     QString m_backgroundColor;
     QString m_secondBackgroundColor;
@@ -112,6 +138,7 @@ private:
 
     QString m_firstBorderColor;
     QString m_secondBorderColor;
+    QString m_accentColor;
 
     int m_defaultMargin;
     int m_defaultBorderSize;

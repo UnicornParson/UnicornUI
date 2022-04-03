@@ -2,8 +2,7 @@
 
 import QtQuick 2.0
 import QtQuick.Window 2.2
-import QtGraphicalEffects 1.12
-
+import Qt5Compat.GraphicalEffects
 Item {
     id: root
 

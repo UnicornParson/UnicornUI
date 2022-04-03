@@ -13,6 +13,7 @@
         <file>qml/UnicornUI/UImage.qml</file>
         <file>qml/img/circleWhite.png</file>
         <file>qml/img/bullet-green.png</file>
+        <file>qml/img/bullet_black.png</file>
         <file>qml/UnicornUI/internal/loggerProxy.qml</file>
         <file>qml/UnicornUI/UModalDialog.qml</file>
         <file>qml/UnicornUI/USimpleDialog.qml</file>
@@ -20,5 +21,6 @@
         <file>qml/UnicornUI/UGridLines.qml</file>
         <file>qml/UnicornUI/internal/UGridSprite.qml</file>
         <file>qml/UnicornUI/UPanel.qml</file>
+        <file>qml/UnicornUI/UMenuPanel.qml</file>
     </qresource>
 </RCC>
