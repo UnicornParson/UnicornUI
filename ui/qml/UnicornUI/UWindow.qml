@@ -27,6 +27,7 @@ ApplicationWindow
     visible: true
     flags: Qt.Window | Qt.WindowFullscreenButtonHint
 
+
     onWidthChanged: {
         wininfo.setWidth(root.width)
     }

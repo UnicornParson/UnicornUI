@@ -10,6 +10,7 @@ class AppSkin : public QObject
     Q_PROPERTY(QString backgroundColor READ backgroundColor NOTIFY backgroundColorChanged)
     Q_PROPERTY(QString secondBackgroundColor READ secondBackgroundColor NOTIFY secondBackgroundColorChanged)
     Q_PROPERTY(QString mainFontColor READ mainFontColor NOTIFY mainFontColorChanged)
+    Q_PROPERTY(QString mainDisabledFontColor READ mainDisabledFontColor NOTIFY mainDisabledFontColorChanged)
 
     Q_PROPERTY(QString buttonBackgroundColor READ buttonBackgroundColor NOTIFY buttonBackgroundColorChanged)
     Q_PROPERTY(QString buttonFontColor READ buttonFontColor NOTIFY buttonFontColorChanged)
@@ -38,6 +39,7 @@ public:
         FirstBorderColor,
         SecondBorderColor,
         FontColor,
+        DisabledFontColor,
         ButtonBackgroundColor,
         ButtonFontColor,
         ButtonBorderColor,
@@ -63,6 +65,7 @@ public:
     QString backgroundColor() const;
     QString secondBackgroundColor() const;
     QString mainFontColor() const;
+    QString mainDisabledFontColor() const;
     QString buttonBackgroundColor() const;
     QString buttonFontColor() const;
     QString buttonBorderColor() const;
@@ -85,6 +88,8 @@ signals:
     void backgroundColorChanged(const QString& value);
     void secondBackgroundColorChanged(const QString& value);
     void mainFontColorChanged(const QString& value);
+    void mainDisabledFontColorChanged(const QString& value);
+
     void buttonBackgroundColorChanged(const QString& value);
     void buttonFontColorChanged(const QString& value);
     void buttonBorderColorChanged(const QString& value);
@@ -107,6 +112,7 @@ private:
     void setBackgroundColor(const QString& v);
     void setSecondBackgroundColor(const QString& v);
     void setMainFontColor(const QString& v);
+    void setMainDisabledFontColor(const QString& v);
     void setButtonBackgroundColor(const QString& v);
     void setButtonFontColor(const QString& v);
     void setButtonBorderColor(const QString& v);
@@ -126,6 +132,7 @@ private:
     QString m_backgroundColor;
     QString m_secondBackgroundColor;
     QString m_mainFontColor;
+    QString m_mainDisabledFontColor;
     QString m_buttonBackgroundColor;
     QString m_buttonFontColor;
     QString m_buttonBorderColor;

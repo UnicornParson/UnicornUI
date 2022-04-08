@@ -14,6 +14,7 @@ CONST_LITERAL DefaultFirstBorderColor("#303030");
 CONST_LITERAL DefaultSecondBorderColor("#1C2A39");
 
 CONST_LITERAL DefaultFontColor("black");
+CONST_LITERAL DefaultDisabledFontColor("gainsboro");
 CONST_LITERAL DefaultButtonBackgroundColor("#C5D3E2");
 CONST_LITERAL DefaultButtonFontColor("#5C6A79");
 CONST_LITERAL DefaultButtonBorderColor("#5C6A79");
@@ -35,6 +36,7 @@ AppSkin::AppSkin(QObject *parent) :
     m_backgroundColor(DefaultSkin::DefaultBackgroundColor),
     m_secondBackgroundColor(DefaultSkin::DefaultSecondBackgroundColor),
     m_mainFontColor(DefaultSkin::DefaultFontColor),
+    m_mainDisabledFontColor(DefaultSkin::DefaultDisabledFontColor),
     m_buttonBackgroundColor(DefaultSkin::DefaultButtonBackgroundColor),
     m_buttonFontColor(DefaultSkin::DefaultButtonFontColor),
     m_buttonBorderColor(DefaultSkin::DefaultButtonBorderColor),
@@ -72,6 +74,8 @@ bool AppSkin::loadFromMap(const QMap<SkinKey, QString>& map)
         case SkinKey::BackgroundColor: {setBackgroundColor(val);break;}
         case SkinKey::SecondBackgroundColor: {setSecondBackgroundColor(val);break;}
         case SkinKey::FirstBorderColor: {setFirstBorderColor(val);break;}
+        case SkinKey::DisabledFontColor: {mainDisabledFontColorChanged(val);break;}
+
         case SkinKey::SecondBorderColor: {setSecondBorderColor(val);break;}
         case SkinKey::FontColor: {setMainFontColor(val);break;}
         case SkinKey::ButtonBackgroundColor: {setButtonBackgroundColor(val);break;}
@@ -105,6 +109,11 @@ QString AppSkin::secondBackgroundColor() const
 QString AppSkin::mainFontColor() const
 {
     return m_mainFontColor;
+}
+
+QString AppSkin::mainDisabledFontColor() const
+{
+    return m_mainDisabledFontColor;
 }
 
 QString AppSkin::buttonBackgroundColor() const
@@ -210,6 +219,16 @@ void AppSkin::setMainFontColor(const QString& v)
         qDebug() << "m_mainFontColor" << "property changed. new value:" << m_mainFontColor;
     }
     emit mainFontColorChanged(m_mainFontColor);
+}
+
+void AppSkin::setMainDisabledFontColor(const QString& v)
+{
+    m_mainDisabledFontColor = v;
+    if(UnicornUIGlobal::self().propertyLoggingEnabled())
+    {
+        qDebug() << "m_mainDisabledFontColor" << "property changed. new value:" << m_mainDisabledFontColor;
+    }
+    emit mainDisabledFontColorChanged(m_mainFontColor);
 }
 
 void AppSkin::setButtonBackgroundColor(const QString& v)

@@ -12,9 +12,9 @@ UPanel {
 
     ListModel {
         id: placeholderModel
-        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 1" }
-        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 2" }
-        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 3" }
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 1"; name: "n1"; entryEnabled: true }
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 2"; name: "n2"; entryEnabled: false }
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 3"; name: "n3"; entryEnabled: true }
     }
 
     ListView {
@@ -22,12 +22,14 @@ UPanel {
         anchors.fill: parent
         model: placeholderModel
         delegate: Rectangle {
+
             property string rowicon: icon
             property string rowtext: text
+            property bool rowenabled: entryEnabled
 
             property int pointSize: 12
             property int minimumPointSize: 10
-            property color textColor: skin.mainFontColor
+            property color textColor: (rowenabled) ? skin.mainFontColor : skin.mainDisabledFontColor
             property color backgroundColor: "transparent"
             property int marginTop: 0
             property int marginBottom: 0
@@ -38,7 +40,7 @@ UPanel {
             width: ListView.view.width
             anchors.bottomMargin: 4
             color: backgroundColor
-
+            opacity: (rowenabled) ? 1.0 : 0.6
             Image {
                 id: iconComponent
                 anchors.left: parent.left
@@ -67,8 +69,14 @@ UPanel {
 
             MouseArea {
                 anchors.fill: parent
+                enabled: rowenabled
                 onClicked: {
-                    list.currentIndex = index
+                    console.log("rowenabled", rowenabled)
+                    if(rowenabled)
+                    {
+                        list.currentIndex = index
+                        console.log("list.currentIndex", list.currentIndex)
+                    }
                 }
             }
         }
