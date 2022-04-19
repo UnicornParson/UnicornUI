@@ -2,6 +2,7 @@
 #include "QStringLiteral"
 #include "QString"
 #include <QDebug>
+#include "qobject.h"
 #include "unicornuiglobal.h"
 
 
@@ -51,7 +52,8 @@ AppSkin::AppSkin(QObject *parent) :
     m_accentColor(DefaultSkin::DefaultAccentColor),
     m_defaultMargin(DefaultSkin::DefaultMargin),
     m_defaultBorderSize(DefaultSkin::DefaultBorderSize),
-    m_defaultBorderRadius(DefaultSkin::DefaultBorderRadius)
+    m_defaultBorderRadius(DefaultSkin::DefaultBorderRadius),
+  m_fontManager(this)
 {
 
 }
@@ -94,6 +96,16 @@ bool AppSkin::loadFromMap(const QMap<SkinKey, QString>& map)
         }
     }
     return ret;
+}
+
+QObject* AppSkin::fonts()
+{
+    return qobject_cast<QObject*>(&m_fontManager);
+}
+
+FontManager& AppSkin::fontManager()
+{
+    return m_fontManager;
 }
 
 QString AppSkin::backgroundColor() const

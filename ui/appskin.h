@@ -2,6 +2,8 @@
 #define APPSKIN_H
 
 #include <QObject>
+#include "fontmanager.h"
+#include "qobject.h"
 
 class AppSkin : public QObject
 {
@@ -31,6 +33,8 @@ class AppSkin : public QObject
     Q_PROPERTY(QString firstBorderColor READ firstBorderColor NOTIFY firstBorderColorChanged)
     Q_PROPERTY(QString secondBorderColor READ secondBorderColor NOTIFY secondBorderColorChanged)
     Q_PROPERTY(QString accentColor READ accentColor NOTIFY accentColorChanged)
+
+    Q_PROPERTY(QObject* fonts READ fonts NOTIFY fontsChanged)
 public:
     enum class SkinKey
     {
@@ -84,6 +88,8 @@ public:
     QString secondBorderColor() const;
     QString accentColor() const;
 
+    QObject* fonts();
+    FontManager& fontManager();
 signals:
     void backgroundColorChanged(const QString& value);
     void secondBackgroundColorChanged(const QString& value);
@@ -106,6 +112,8 @@ signals:
     void firstBorderColorChanged(const QString& value);
     void secondBorderColorChanged(const QString& value);
     void accentColorChanged(const QString& value);
+
+    void fontsChanged(QObject* value);
 
 private:
     // private setters
@@ -151,6 +159,7 @@ private:
     int m_defaultBorderSize;
     int m_defaultBorderRadius;
 
+    FontManager m_fontManager;
 }; // class AppSkin
 
 #endif // APPSKIN_H

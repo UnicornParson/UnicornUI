@@ -186,7 +186,7 @@ void WindowController::onQmlWarnings(const QList<QQmlError> &warnings)
 
 QVariant WindowController::contextProperty(const QString &name) const
 {
-    m_qmlEngine->rootContext()->contextProperty(name);
+    return m_qmlEngine->rootContext()->contextProperty(name);
 }
 
 void WindowController::setContextProperty(const QString &name, QObject *obj)

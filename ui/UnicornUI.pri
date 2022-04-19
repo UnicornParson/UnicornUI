@@ -2,6 +2,7 @@ INCLUDEPATH += $$PWD
 QT += quickcontrols2 quick qml
 QML_IMPORT_TRACE=1
 SOURCES += \
+    $$PWD/fontmanager.cpp \
     $$PWD/templatestypes.cpp \
     $$PWD/qmlbootstrapper.cpp \
     $$PWD/appskin.cpp \
@@ -10,6 +11,7 @@ SOURCES += \
     $$PWD/windowinfo.cpp
 
 HEADERS += \
+    $$PWD/fontmanager.h \
     $$PWD/templatestypes.h \
     $$PWD/qmlbootstrapper.h \
     $$PWD/appskin.h \

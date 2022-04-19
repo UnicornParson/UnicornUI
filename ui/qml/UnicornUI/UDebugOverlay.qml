@@ -18,6 +18,7 @@ Item {
         height: sizeLabel.height
         color: "black"
         opacity: 0.5
+        visible: globals ? globals.debugGridEnabled : false
     }
 
     Text {
@@ -31,5 +32,6 @@ Item {
         minimumPointSize: 6
         font.pointSize: 8
         fontSizeMode: Text.Fit
+        visible: globals ? globals.debugGridEnabled : false
     }
 }

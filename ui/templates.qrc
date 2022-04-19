@@ -22,5 +22,7 @@
         <file>qml/UnicornUI/internal/UGridSprite.qml</file>
         <file>qml/UnicornUI/UPanel.qml</file>
         <file>qml/UnicornUI/UMenuPanel.qml</file>
+        <file>qml/UnicornUI/UContentBox.qml</file>
+        <file>qml/UnicornUI/internal/empty.qml</file>
     </qresource>
 </RCC>
