@@ -2,6 +2,7 @@
 #include "QStringLiteral"
 #include "QString"
 #include <QDebug>
+#include "fontmanager.h"
 #include "qobject.h"
 #include "unicornuiglobal.h"
 
@@ -54,6 +55,11 @@ AppSkin::AppSkin(QObject *parent) :
     m_defaultBorderSize(DefaultSkin::DefaultBorderSize),
     m_defaultBorderRadius(DefaultSkin::DefaultBorderRadius),
   m_fontManager(this)
+{
+
+}
+
+void AppSkin::declareQML()
 {
 
 }

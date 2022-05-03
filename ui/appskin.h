@@ -90,6 +90,8 @@ public:
 
     QObject* fonts();
     FontManager& fontManager();
+
+    static void declareQML();
 signals:
     void backgroundColorChanged(const QString& value);
     void secondBackgroundColorChanged(const QString& value);

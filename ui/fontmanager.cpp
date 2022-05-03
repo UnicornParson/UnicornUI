@@ -1,6 +1,7 @@
 #include "fontmanager.h"
+#include "qfont.h"
 #include <QMetaEnum>
-
+#include <QQmlEngine>
 namespace
 {
 static const QFont DefaultFont;
@@ -29,6 +30,17 @@ void FontManager::fill()
             m_fonts.insert(tt, DefaultFont);
         }
     }
+}
+
+void FontManager::declareQML()
+{
+    qRegisterMetaType<FontManager::TextType>("TextType");
+    qmlRegisterUncreatableType<TextType>("UnicornUiTypes", 1, 0, "TextType", "Font styles");
+}
+
+QFont FontManager::get(TextType type) const
+{
+    return m_fonts.value(type, QFont());
 }
 
 void FontManager::set(const QHash<TextType, QFont>& fonts)

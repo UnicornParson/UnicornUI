@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import UnicornUiTypes 1.0
 
 UBaseItem {
     id: root
@@ -16,6 +17,8 @@ UBaseItem {
     property alias textitem: label
     property alias font: label.font
 
+    property int style: TextType.Custom
+    Component.onCompleted: console.log("DDDDDDDDDDDDDDDDDD:", TextType.Title)
     anchors {
         topMargin: marginTop
         bottomMargin: marginBottom
@@ -41,7 +44,8 @@ UBaseItem {
         text: "no text"
         color: root.textColor
         minimumPointSize: root.minimumPointSize
-        font.pointSize: root.pointSize
+        //font.pointSize: root.pointSize
+        font: (root.style === TextType.Custom) ? Qt.font({pointSize: 10}) : fontmanager.get(root.style)
         fontSizeMode: Text.Fit
         //anchors.margins: skin.defaultMargin
     }

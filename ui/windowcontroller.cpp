@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QDir>
+#include "appskin.h"
 #include "templatestypes.h"
 #include "windowcontroller.h"
 #include "unicornuiglobal.h"
@@ -81,6 +82,7 @@ bool WindowController::start()
         m_qmlEngine->rootContext()->setContextProperty("skin", &m_skin);
         m_qmlEngine->rootContext()->setContextProperty("wininfo", &m_winInfo);
         m_qmlEngine->rootContext()->setContextProperty("globals", &UnicornUIGlobal::self());
+        m_qmlEngine->rootContext()->setContextProperty("fontmanager", &m_skin.fontManager());
         m_qmlEngine->addImportPath(MainImportPath);
         for (const QString& s: AdditionalImports)
         {
@@ -99,6 +101,8 @@ bool WindowController::start()
             qWarning() << "objectCreated" << url;
         });
 
+        FontManager::declareQML();
+        AppSkin::declareQML();
         m_qmlEngine->load(m_rootPath);
         ret = true;
     }
