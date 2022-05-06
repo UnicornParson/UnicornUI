@@ -16,4 +16,5 @@ ULabel 1.0 ULabel.qml
 UPanel 1.0 UPanel.qml
 UMenuPanel 1.0 UMenuPanel.qml
 UContentBox 1.0 UContentBox.qml
-
+UInput 1.0 UInput.qml.qml
+UInputFileSelector 1.0 UInputFileSelector.qml

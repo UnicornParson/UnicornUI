@@ -24,5 +24,7 @@
         <file>qml/UnicornUI/UMenuPanel.qml</file>
         <file>qml/UnicornUI/UContentBox.qml</file>
         <file>qml/UnicornUI/internal/empty.qml</file>
+        <file>qml/UnicornUI/UInput.qml</file>
+        <file>qml/UnicornUI/UInputFileSelector.qml</file>
     </qresource>
 </RCC>

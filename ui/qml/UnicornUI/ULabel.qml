@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import UnicornUiTypes 1.0
+import TemplatesTypes 1.0
 
 UBaseItem {
     id: root
@@ -16,9 +16,10 @@ UBaseItem {
     property alias text: label.text
     property alias textitem: label
     property alias font: label.font
+    property alias backgroundItem: background
 
     property int style: TextType.Custom
-    Component.onCompleted: console.log("DDDDDDDDDDDDDDDDDD:", TextType.Title)
+
     anchors {
         topMargin: marginTop
         bottomMargin: marginBottom
@@ -28,11 +29,9 @@ UBaseItem {
 
 
     Rectangle {
-
         id: background
         anchors.fill: parent
         color: root.backgroundColor
-        //anchors.margins: skin.defaultMargin
     }
 
 
@@ -44,9 +43,14 @@ UBaseItem {
         text: "no text"
         color: root.textColor
         minimumPointSize: root.minimumPointSize
-        //font.pointSize: root.pointSize
         font: (root.style === TextType.Custom) ? Qt.font({pointSize: 10}) : fontmanager.get(root.style)
         fontSizeMode: Text.Fit
-        //anchors.margins: skin.defaultMargin
+    }
+
+    Connections {
+        target: fontmanager
+        function onFontsChanged() {
+            label.font = (root.style === TextType.Custom) ? Qt.font({pointSize: 10}) : fontmanager.get(root.style)
+        }
     }
 }

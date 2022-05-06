@@ -15,12 +15,12 @@ FontManager::FontManager(QObject *parent)
 
 void FontManager::fill()
 {
-    QMetaEnum e = QMetaEnum::fromType<FontManager::TextType>();
+    QMetaEnum e = QMetaEnum::fromType<TextType_t>();
     QStringList countryList;
 
     for (int k = 0; k < e.keyCount(); ++k)
     {
-        TextType tt = TextType(e.value(k));
+        TextType_t tt = TextType_t(e.value(k));
         if(m_fonts.contains(tt))
         {
             m_fonts[tt] = DefaultFont;
@@ -34,16 +34,15 @@ void FontManager::fill()
 
 void FontManager::declareQML()
 {
-    qRegisterMetaType<FontManager::TextType>("TextType");
-    qmlRegisterUncreatableType<TextType>("UnicornUiTypes", 1, 0, "TextType", "Font styles");
+
 }
 
-QFont FontManager::get(TextType type) const
+QFont FontManager::get(TextType_t type) const
 {
     return m_fonts.value(type, QFont());
 }
 
-void FontManager::set(const QHash<TextType, QFont>& fonts)
+void FontManager::set(const QHash<TextType_t, QFont>& fonts)
 {
     for(auto it = fonts.constKeyValueBegin(); it != fonts.constKeyValueEnd(); ++it)
     {
@@ -52,7 +51,7 @@ void FontManager::set(const QHash<TextType, QFont>& fonts)
     emit fontsChanged();
 }
 
-void FontManager::set(TextType type, const QFont& font)
+void FontManager::set(TextType_t type, const QFont& font)
 {
     m_fonts[type] = font;
     emit fontsChanged();

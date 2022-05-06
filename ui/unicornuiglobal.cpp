@@ -88,3 +88,8 @@ void UnicornUIGlobal::setPropertyLoggingEnabled(bool v)
         emit propertyLoggingEnabledChanged(m_propertyLoggingEnabled);
     }
 }
+
+QString UnicornUIGlobal::openFileDialog(const QString& title, const QString& startPoint, FileAction_t action, const QString& filter)
+{
+
+}

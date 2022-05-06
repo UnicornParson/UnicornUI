@@ -1,8 +1,10 @@
 #ifndef UNICORNUIGLOBAL_H
 #define UNICORNUIGLOBAL_H
 
+#include "templatestypes.h"
 #include <QObject>
 #include <QDebug>
+
 #ifndef MAYBE_UNUSED
 #define MAYBE_UNUSED [[maybe_unused]]
 #endif
@@ -61,6 +63,8 @@ public:
 
     bool fpsBoosterEnabled() const;
     Q_INVOKABLE void setFpsBoosterEnabled(bool v);
+
+    Q_INVOKABLE QString openFileDialog(const QString& title, const QString& startPoint, FileAction_t action, const QString& filter="*.*");
 
 signals:
     void debugGridEnabledChanged(bool v);
