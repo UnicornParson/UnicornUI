@@ -7,7 +7,16 @@ UWindow
     id: root
     backgroundElement.color: skin.backgroundColor
 
-    UPanel {
+    ListModel {
+        id: menuModel
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "Elements"; name: "page1"; entryEnabled: true }
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 2"; name: "page2"; entryEnabled: true }
+        ListElement { icon: "qrc:/qml/img/bullet_black.png"; text: "menu item 3"; name: "page3"; entryEnabled: true }
+    }
+    UMenuPanel
+    {
+        id: menuPanel
+
         anchors {
             left: parent.left
             top: parent.top
@@ -15,20 +24,26 @@ UWindow
 
         }
         width: 200
-    }
+        model: menuModel
+        onCurrentItemChanged: {
+            // qrc:/qml/page1.qml
+            content.source = "qrc:/qml/" + name + ".qml"
 
-    UTextButton {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-        width: 200
-        height: 100
-        anchors.top: parent.top
-        anchors.left: parent.left
-
-        onClicked: {
-            console.warn("onClicked")
         }
     }
+
+    UContentBox {
+        id: content
+        source: "qrc:/qml/page1.qml"
+        anchors {
+            left: menuPanel.right
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+        }
+    }
+
+
 
 Component.onCompleted: {
     if(!globals)

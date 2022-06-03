@@ -36,3 +36,4 @@ RESOURCES += \
 #requiredData.files +=$$PWD/qml/*
 #INSTALLS += requiredData
 
+

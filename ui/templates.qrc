@@ -26,5 +26,11 @@
         <file>qml/UnicornUI/internal/empty.qml</file>
         <file>qml/UnicornUI/UInput.qml</file>
         <file>qml/UnicornUI/UInputFileSelector.qml</file>
+        <file>qml/page1.qml</file>
+        <file>qml/page2.qml</file>
+        <file>qml/page3.qml</file>
+        <file>qml/UnicornUI/UColorConstants.qml</file>
+        <file>qml/shaders/test1.frag</file>
+        <file>qml/shaders/test1.frag.qsb</file>
     </qresource>
 </RCC>

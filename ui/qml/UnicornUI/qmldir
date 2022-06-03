@@ -3,6 +3,8 @@ module UnicornUI
 internal loggerProxy internal/loggerProxy.js
 internal UGridSprite internal/UGridSprite.qml
 
+singleton UColorConstants 1.0 UColorConstants.qml
+
 UIconButton 1.0 UIconButton.qml
 UTextButton 1.0 UTextButton.qml
 UWindow 1.0 UWindow.qml
